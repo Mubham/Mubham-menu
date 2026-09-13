@@ -1,0 +1,646 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مُبهم - MENU</title>
+    <meta name="description" content="منيو مُبهم - قهوة اليوم، V60، مشروبات ساخنة وباردة، وحلا. اطلع على الأسعار وتواصل معنا عبر مواقع التواصل.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-body: #241712;
+            --bg-container: #382419;
+            --bg-section: #4c3122;
+            --bg-header-box: #6b4326;
+            --border-color: #7a5236;
+            --text-main: #f3e9dc;
+            --text-sub: #d1b8ab;
+            --accent-color: #d97706;
+        }
+ 
+        [data-theme="light"] {
+            --bg-body: #f4ece1;
+            --bg-container: #fffaf3;
+            --bg-section: #f1e2cd;
+            --bg-header-box: #e7c99b;
+            --border-color: #d8bd97;
+            --text-main: #2c1d18;
+            --text-sub: #6a4f3e;
+            --accent-color: #b45f06;
+        }
+ 
+        [data-theme="light"] .brand-logo-img { filter: none; }
+ 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+ 
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: 'Cairo', sans-serif;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+ 
+        .menu-container,
+        section.menu-section,
+        nav.category-nav,
+        .section-header-box,
+        .social-icon {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+ 
+        #themeToggleBtn {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+ 
+        #themeToggleBtn:hover {
+            background-color: var(--bg-header-box);
+        }
+ 
+        .menu-container {
+            width: 100%;
+            max-width: 1280px;
+            background-color: var(--bg-container);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            position: relative;
+            border: 2px solid var(--border-color);
+        }
+ 
+        /* Header & Logo */
+        header.menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+ 
+        .menu-title {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: 5px;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+ 
+        .brand-logo-img {
+            height: 75px;
+            width: auto;
+            object-fit: contain;
+        }
+ 
+        /* Sticky Navigation Bar */
+        nav.category-nav {
+            background-color: var(--bg-section);
+            padding: 12px 20px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            position: sticky;
+            top: 15px;
+            z-index: 100;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+ 
+        nav.category-nav a {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.3s;
+            padding: 5px 10px;
+            border-radius: 6px;
+        }
+ 
+        nav.category-nav a:hover, nav.category-nav a.active {
+            color: var(--text-main);
+            background-color: var(--bg-header-box);
+        }
+ 
+        /* Main Grid Layout */
+        main.menu-main {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+ 
+        .menu-column {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+ 
+        /* Sections */
+        section.menu-section {
+            background: var(--bg-section);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            scroll-margin-top: 90px;
+            transition: box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+ 
+        section.menu-section.section-highlight {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.35);
+        }
+ 
+        .section-header-box {
+            background-color: var(--bg-header-box);
+            color: var(--text-main);
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 700;
+            font-size: 19px;
+        }
+ 
+        .prices-subheaders {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: var(--text-sub);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+ 
+        .single-price-header {
+            text-align: left;
+            font-size: 14px;
+            color: var(--text-sub);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+ 
+        /* Menu Items */
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--border-color);
+            border-radius: 8px;
+            transition: background-color 0.15s ease, transform 0.15s ease;
+        }
+ 
+        .item-row:active {
+            background-color: var(--bg-header-box);
+            transform: scale(0.99);
+        }
+ 
+        .item-row:last-child {
+            border-bottom: none;
+        }
+ 
+        @keyframes menuFadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+ 
+        .menu-container {
+            animation: menuFadeUp 0.5s ease-out both;
+        }
+ 
+        .item-info {
+            display: flex;
+            flex-direction: column;
+        }
+ 
+        .item-ar {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+ 
+        .item-en {
+            font-size: 12px;
+            color: var(--text-sub);
+            text-transform: uppercase;
+        }
+ 
+        .item-price {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-main);
+            direction: ltr;
+        }
+ 
+        .dual-prices {
+            display: flex;
+            gap: 20px;
+            direction: ltr;
+        }
+ 
+        .dual-prices span {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+            width: 45px;
+            text-align: center;
+        }
+ 
+        /* Footer */
+        footer.menu-footer {
+            border-top: 2px solid var(--border-color);
+            padding-top: 25px;
+            margin-top: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            text-align: center;
+        }
+ 
+        .footer-info {
+            font-size: 15px;
+            color: var(--text-sub);
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            align-items: center;
+        }
+ 
+        .footer-info i {
+            color: var(--accent-color);
+            margin-left: 5px;
+        }
+ 
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+ 
+        .social-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--bg-section);
+            color: var(--text-main);
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 18px;
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
+        }
+ 
+        .social-icon:hover {
+            background-color: var(--text-main);
+            color: var(--bg-body);
+            transform: translateY(-3px);
+        }
+ 
+        .copyright {
+            font-size: 13px;
+            color: var(--text-sub);
+            opacity: 0.8;
+        }
+ 
+        /* Scroll to Top Button */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 18px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 999;
+            transition: 0.3s;
+        }
+ 
+        #scrollTopBtn:hover {
+            transform: scale(1.1);
+        }
+ 
+        /* Focus visibility for accessibility */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+ 
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                scroll-behavior: auto !important;
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+ 
+        /* Responsive Breakpoints for Mobile */
+        @media (max-width: 1024px) {
+            main.menu-main {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+ 
+        @media (max-width: 768px) {
+            main.menu-main {
+                grid-template-columns: 1fr;
+            }
+            .menu-container {
+                padding: 15px;
+            }
+            .menu-title {
+                font-size: 32px;
+            }
+            nav.category-nav {
+                font-size: 13px;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+ 
+    <!-- زر العودة للأعلى -->
+    <button id="scrollTopBtn" onclick="scrollToTop()" title="الرجوع للأعلى"><i class="fa-solid fa-arrow-up"></i></button>
+ 
+    <div class="menu-container">
+        
+        <!-- رأس الصفحة والشعار -->
+        <header class="menu-header">
+            <h1 class="menu-title">MENU</h1>
+            <img src="logo.jpeg" alt="شعار مُبهم" class="brand-logo-img" loading="lazy">
+            <button id="themeToggleBtn" onclick="toggleTheme()" title="تبديل الوضع">
+                <i class="fa-solid fa-moon" id="themeIcon"></i>
+                <span id="themeLabel">داكن</span>
+            </button>
+        </header>
+ 
+        <!-- شريط التصنيفات السريع -->
+        <nav class="category-nav" aria-label="أقسام المنيو">
+            <a href="#sweet" data-nav>الحلا</a>
+            <a href="#cold-drinks" data-nav>المشروبات الباردة</a>
+            <a href="#coffee-day" data-nav>قهوة اليوم</a>
+            <a href="#v60" data-nav>V60</a>
+            <a href="#hot-drinks" data-nav>المشروبات الساخنة</a>
+        </nav>
+ 
+        <!-- المحتوى الرئيسي للمنيو -->
+        <main class="menu-main">
+            
+            <!-- العمود الأول: الحلا + المشروبات الباردة -->
+            <div class="menu-column">
+                
+                <!-- قسم الحلا -->
+                <section class="menu-section" id="sweet">
+                    <div class="section-header-box">Sweet | الحلا</div>
+                    <div class="item-row">
+                        <div class="item-info">
+                            <span class="item-ar">بيكان</span>
+                            <span class="item-en">Pecan</span>
+                        </div>
+                        <div class="item-price">23 ر.س</div>
+                    </div>
+                    <div class="item-row">
+                        <div class="item-info">
+                            <span class="item-ar">تيراميسو</span>
+                            <span class="item-en">Tiramisu</span>
+                        </div>
+                        <div class="item-price">19 ر.س</div>
+                    </div>
+                    <div class="item-row">
+                        <div class="item-info">
+                            <span class="item-ar">كيكة عسل</span>
+                            <span class="item-en">Honey Cake</span>
+                        </div>
+                        <div class="item-price">20 ر.س</div>
+                    </div>
+                    <div class="item-row">
+                        <div class="item-info">
+                            <span class="item-ar">تشييز توت</span>
+                            <span class="item-en">Berry Cheesecake</span>
+                        </div>
+                        <div class="item-price">19 ر.س</div>
+                    </div>
+                </section>
+ 
+                <!-- قسم المشروبات الباردة -->
+                <section class="menu-section" id="cold-drinks">
+                    <div class="section-header-box">المشروبات الباردة | Cold Drinks</div>
+                    <div class="single-price-header">السعر</div>
+                    <div class="item-row"><div class="item-info"><span class="item-ar">امريكانو</span><span class="item-en">Americano</span></div><div class="item-price">9 ر.س</div></div>
+                    <div class="item-row"><div class="item-info"><span class="item-ar">إسبريسو ألفريـدو</span><span class="item-en">Espresso Alfredo</span></div><div class="item-price">13 ر.س</div></div>
+                    <div class="item-row"><div class="item-info"><span class="item-ar">لاتيه</span><span class="item-en">Latte</span></div><div class="item-price">16 ر.س</div></div>
+                    <div class="item-row"><div class="item-info"><span class="item-ar">سبنش لاتيه</span><span class="item-en">Spanish Latte</span></div><div class="item-price">18 ر.س</div></div>
+                    <div class="item-row"><div class="item-info"><span class="item-ar">ماتشا</span><span class="item-en">Matcha</span></div><div class="item-price">20 ر.س</div></div>
+                    <div class="item-row"><div class="item-info"><span class="item-ar">كركديه</span><span class="item-en">Hibiscus</span></div><div class="item-price">16 ر.س</div></div>
+                </section>
+ 
+            </div>
+ 
+            <!-- العمود الثاني: قهوة اليوم + V60 -->
+            <div class="menu-column">
+                
+                <!-- قهوة اليوم -->
+                <section class="menu-section" id="coffee-day">
+                    <div class="section-header-box">قهوة اليوم</div>
+                    <div class="prices-subheaders">
+                        <span>الحجم</span>
+                        <span>حار | بارد</span>
+                    </div>
+                    <div class="item-row">
+                        <div class="item-info"><span class="item-ar">قهوة اليوم (صغير)</span><span class="item-en">Coffee Day (s)</span></div>
+                        <div class="dual-prices"><span>9 ر.س</span><span>8 ر.س</span></div>
+                    </div>
+                    <div class="item-row">
+                        <div class="item-info"><span class="item-ar">قهوة اليوم (كبير)</span><span class="item-en">Coffee Day (l)</span></div>
+                        <div class="dual-prices"><span>11 ر.س</span><span>10 ر.س</span></div>
+                    </div>
+                </section>
+ 
+                <!-- V60 -->
+                <section class="menu-section" id="v60">
+                    <div class="section-header-box">قهوة V60 | V60 Coffee</div>
+                    <div class="prices-subheaders">
+                        <span>النوع</span>
+                        <span>حار | بارد</span>
+                    </div>
+                    <div class="item-row">
+                        <div class="item-info"><span class="item-ar">كولمبي</span><span class="item-en">Colombian</span></div>
+                        <div class="dual-prices"><span>18 ر.س</span><span>15 ر.س</span></div>
+                    </div>
+                    <div class="item-row">
+                        <div class="item-info"><span class="item-ar">اثيوبي</span><span class="item-en">Ethiopian</span></div>
+                        <div class="dual-prices"><span>18 ر.س</span><span>15 ر.س</span></div>
+                    </div>
+                    <div class="item-row">
+                        <div class="item-info"><span class="item-ar">برازيلي</span><span class="item-en">Brazilian</span></div>
+                        <div class="dual-prices"><span>18 ر.س</span><span>15 ر.س</span></div>
+                    </div>
+                    <div class="item-row">
+                        <div class="item-info"><span class="item-ar">يمني</span><span class="item-en">Yemeni</span></div>
+                        <div class="dual-prices"><span>22 ر.س</span><span>22 ر.س</span></div>
+                    </div>
+                </section>
+ 
+            </div>
+ 
+            <!-- العمود الثالث: المشروبات الساخنة -->
+            <div class="menu-column">
+                <section class="menu-section" id="hot-drinks">
+                    <div class="section-header-box">المشروبات الساخنة | Hot Drinks</div>
+                    <div class="single-price-header">السعر</div>
+                    <div class="item-row"><div class="item-info"><span class="item-ar">إسبريسو</span><span class="item-en">Espresso</span></div><div class="item-price">9 ر.س</div></div>
+                    <div class="item-row"><div class="item-info"><span class="item-ar">كورتادو</span><span class="item-en">Cortado</span></div><div class="item-price">11 ر.س</div></div>
+                    <div class="item-row"><div class="item-info"><span class="item-ar">فلات وايت</span><span class="item-en">Flat White</span></div><div class="item-price">13 ر.س</div></div>
+                    <div class="item-row"><div class="item-info"><span class="item-ar">لاتيه (صغير)</span><span class="item-en">Latte (s)</span></div><div class="item-price">13 ر.س</div></div>
+                    <div class="item-row"><div class="item-info"><span class="item-ar">كابتشينو</span><span class="item-en">Cappuccino</span></div><div class="item-price">14 ر.س</div></div>
+                    <div class="item-row"><div class="item-info"><span class="item-ar">هوت تشوكلت (صغير)</span><span class="item-en">Hot Chocolate (s)</span></div><div class="item-price">14 ر.س</div></div>
+                    <div class="item-row"><div class="item-info"><span class="item-ar">سبنش لاتيه</span><span class="item-en">Spanish Latte</span></div><div class="item-price">16 ر.س</div></div>
+                    <div class="item-row"><div class="item-info"><span class="item-ar">لاتيه (كبير)</span><span class="item-en">Latte (l)</span></div><div class="item-price">16 ر.س</div></div>
+                    <div class="item-row"><div class="item-info"><span class="item-ar">هوت تشوكلت (كبير)</span><span class="item-en">Hot Chocolate (l)</span></div><div class="item-price">18 ر.س</div></div>
+                </section>
+            </div>
+ 
+        </main>
+ 
+        <!-- تذييل الصفحة (Footer) -->
+        <footer class="menu-footer">
+            <div class="footer-info">
+                <span><i class="fa-regular fa-clock"></i> أوقات العمل: طوال أيام الأسبوع 24 ساعة</span>
+                <span>(ما عدا يوم الجمعة: يبدأ الدوام من بعد صلاة الجمعة)</span>
+            </div>
+            
+            <div class="social-icons">
+                <a href="https://maps.app.goo.gl/jRsRUT3ZDCNZmNpL8?g_st=ic" target="_blank" rel="noopener noreferrer" class="social-icon" title="موقعنا على الخريطة"><i class="fa-solid fa-location-dot"></i></a>
+                <a href="https://www.tiktok.com/@mub1am?_r=1&_t=ZS-99aUzlNnsvc" target="_blank" rel="noopener noreferrer" class="social-icon" title="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/mub1am?stkn=MTRnbDJ2N2JyZnBsaA==" target="_blank" rel="noopener noreferrer" class="social-icon" title="انستجرام"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+ 
+            <p class="copyright">© مُبهم 2026. جميع الحقوق محفوظة.</p>
+        </footer>
+ 
+    </div>
+ 
+    <!-- جافاسكريبت لزر الصعود، تفعيل الروابط، وتمييز القسم النشط -->
+    <script>
+        const scrollBtn = document.getElementById("scrollTopBtn");
+        const navLinks = document.querySelectorAll('nav.category-nav a[data-nav]');
+        const sections = Array.from(navLinks).map(link => document.querySelector(link.getAttribute('href')));
+ 
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollBtn.style.display = "flex";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+            updateActiveNav();
+        };
+ 
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+ 
+        // تمييز الرابط النشط في شريط التنقل حسب موقع السكرول
+        function updateActiveNav() {
+            let currentId = sections[0] ? sections[0].id : null;
+            const scrollPos = window.scrollY + 120;
+ 
+            sections.forEach(section => {
+                if (section && section.offsetTop <= scrollPos) {
+                    currentId = section.id;
+                }
+            });
+ 
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
+            });
+        }
+ 
+        // تمييز القسم مؤقتًا عند الانتقال إليه من شريط التنقل
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.classList.add('section-highlight');
+                    setTimeout(() => target.classList.remove('section-highlight'), 1200);
+                }
+            });
+        });
+ 
+        updateActiveNav();
+ 
+        // تبديل الوضع الغامق / الفاتح
+        const themeIcon = document.getElementById('themeIcon');
+        const themeLabel = document.getElementById('themeLabel');
+ 
+        function applyTheme(theme) {
+            if (theme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeIcon.className = 'fa-solid fa-sun';
+                themeLabel.textContent = 'فاتح';
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                themeIcon.className = 'fa-solid fa-moon';
+                themeLabel.textContent = 'داكن';
+            }
+        }
+ 
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+            const next = current === 'light' ? 'dark' : 'light';
+            applyTheme(next);
+        }
+ 
+        applyTheme('dark');
+    </script>
+</body>
+</html>
